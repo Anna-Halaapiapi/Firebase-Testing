@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>login</title>
+
+<!-- FIREBASE CONFIG START -->
+  <!-- // Import the SDKs you need -->
+  <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-auth-compat.js"></script>
+  <!-- // TODO: Add SDKs for Firebase products that you want to use -->
+  <!-- // https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  
+  <!-- defines the HTML element where firebaseUI sign-in widget will be rendered  -->
+  <div id="firebaseui-auth-container"></div>
+  <div id="loader">Loading...</div>
+
+<script>
+  // Initialize Firebase with your web app's Firebase configuration
+  const firebaseApp = firebase.initializeApp({
+    apiKey: "AIzaSyCQKi2WVxr_Mcc_PpvOH_mtm2AMfg67Tgg",
+    authDomain: "anna-firebase-testing.firebaseapp.com",
+    projectId: "anna-firebase-testing",
+    storageBucket: "anna-firebase-testing.firebasestorage.app",
+    messagingSenderId: "340810180220",
+    appId: "1:340810180220:web:8963c041b695a521c9cbf9"
+  });
+   const auth = firebaseApp.auth();
+  </script>
+
+  <!--import prebuilt UI (Note: Only Required for Login Page) -->
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+
+  <script>
+
+  // Initialize the FirebaseUI Widget using Firebase (only for Login page)
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+  // add email/password and OAuth(Google) options to login
+  ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID
+  ],
+  });
+  </script>
+
+<!-- FIREBASE CONFIG END -->
+</head>
+<body>
+    <h1>login</h1>
+</body>
+</html>

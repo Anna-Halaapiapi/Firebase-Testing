@@ -28,5 +28,19 @@
 </head>
 <body>
     <h1>dashboard</h1>
+
+<!-- Get JWT token from Firebase, send JWT token to backend -->
+<script>
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (!user) return;
+
+    user.getIdToken(true).then(function(idToken) {
+        fetch("http://localhost:5000/dashboard", {
+        method: "GET",
+        headers: { "Authorization": "Bearer " + idToken }
+    });
+  });
+});
+</script>
 </body>
 </html>

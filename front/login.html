@@ -11,11 +11,6 @@
   <!-- // TODO: Add SDKs for Firebase products that you want to use -->
   <!-- // https://firebase.google.com/docs/web/setup#available-libraries -->
 
-  
-  <!-- defines the HTML element where firebaseUI sign-in widget will be rendered  -->
-  <div id="firebaseui-auth-container"></div>
-  <div id="loader">Loading...</div>
-
 <script>
   // Initialize Firebase with your web app's Firebase configuration
   const firebaseApp = firebase.initializeApp({
@@ -40,16 +35,30 @@
 
   // add email/password and OAuth(Google) options to login
   ui.start('#firebaseui-auth-container', {
+  signInSuccessUrl: 'dashboard.html', // redirect to dashbaord when user login is sucessful
   signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID
+    {
+        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        disableSignUp: { status: true }
+    },
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID // OAuth
   ],
+  // Terms of service url.
+  tosUrl: '<your-tos-url>',
+  // Privacy policy url.
+  privacyPolicyUrl: '<your-privacy-policy-url>',
   });
   </script>
 
-<!-- FIREBASE CONFIG END -->
 </head>
 <body>
     <h1>login</h1>
+      
+  <!-- defines the HTML element where firebaseUI sign-in widget will be rendered  -->
+  <div id="firebaseui-auth-container"></div>
+  <div id="loader">Loading...</div>
+
+<!-- FIREBASE CONFIG END -->
+
 </body>
 </html>
